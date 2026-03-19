@@ -11,9 +11,9 @@ git_config(repo = ".")
 
 git_config_global()
 
-git_config_set(name, value, repo = ".", add = FALSE)
+git_config_set(name, value, repo = ".", add = FALSE, unset = FALSE)
 
-git_config_global_set(name, value, add = FALSE)
+git_config_global_set(name, value, add = FALSE, unset = FALSE)
 }
 \arguments{
 \item{repo}{The path to the git repository. If the directory is not a
@@ -30,6 +30,11 @@ unset).}
 \item{add}{if \code{TRUE}, append a new entry for \code{name} instead of replacing
 existing one(s). Equivalent to \verb{git config --add}. Only supported for
 string values.}
+
+\item{unset}{if \code{TRUE}, delete all entries for \code{name} matching the regular
+expression \code{value}, equivalent \verb{git config --unset}. If \code{TRUE} and
+\code{value == NULL}, delete all entries for \code{name}, equivalent to
+\verb{git config --unset-all}.}
 }
 \value{
 \itemize{
